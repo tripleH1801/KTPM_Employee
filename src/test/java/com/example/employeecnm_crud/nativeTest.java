@@ -7,29 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmployeeCnmCrudApplicationTests {
+public class nativeTest {
     @Autowired
     private EmployeeRepository employeeRepository;
     @Test
     public void getAll() {
-        System.out.println("getAll: " + employeeRepository.findAll());
+        System.out.println("getAll: " + employeeRepository.getAll());
     }
     @Test
     public void add() {
-        Employee employee = new Employee(1, "Ha", "Hoang");
-        System.out.println("Add: " + employeeRepository.save(employee));
+        employeeRepository.addEmployee("Test2 ", "Test1");
     }
-
     @Test
     public void update() {
-        Employee employee = employeeRepository.findById(1).get();
-        employee.setFirstName("TEst ");
-        System.out.println("Update: " + employeeRepository.save(employee));
+        Employee employee = employeeRepository.findById(2).get();
+        employeeRepository.updateEmployee(2, "new name1 ", "new name2");
     }
 
     @Test
     public void delete() {
-        employeeRepository.deleteById(1);
+        employeeRepository.deleteemployee(2);
     }
-
 }
